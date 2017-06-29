@@ -3,8 +3,9 @@ cache:
   directories:
     - ${GOPATH}/src/github.com/${TRAVIS_REPO_SLUG}/vendor
     - ${GOPATH}/src/github.com/fzipp
+    - ${GOPATH}/src/github.com/golang
+    - ${GOPATH}/src/github.com/gordonklaus
     - ${GOPATH}/src/github.com/h12w
-    - ${GOPATH}/src/github.com/Masterminds    
     - ${GOPATH}/src/github.com/mattn
 go:
   - tip
@@ -17,11 +18,13 @@ env:
     CI_SERVICE=travis-ci
 
 install:
-  - go get -v -u github.com/client9/misspell/cmd/misspell
-  - go get -v -u github.com/fzipp/gocyclo
-  - go get -v -u github.com/h12w/gosweep
-  - go get -v -u github.com/mattn/goveralls
-  - go get -v -u github.com/Masterminds/glide
+  - go get -v github.com/client9/misspell/cmd/misspell
+  - go get -v github.com/fzipp/gocyclo
+  - go get -v github.com/golang/lint/golint
+  - go get -v github.com/gordonklaus/ineffassign
+  - go get -v github.com/h12w/gosweep
+  - go get -v github.com/mattn/goveralls
+  - go get -v -u golang.org/x/tools/cmd/goimports
   - glide install
 
 script:
